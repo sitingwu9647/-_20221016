@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>04_jQuery对象</title>
+</head>
+
+<body>
+<button>测试一</button>
+<button>测试二</button>
+<button id="btn3">测试三</button>
+<button>测试四</button>
+
+<!--
+1. jQuery对象是一个包含所有匹配的任意多个dom元素的伪数组对象
+2. 基本行为
+  * size()/length: 包含的DOM元素个数
+  * [index]/get(index): 得到对应位置的DOM元素
+  * each(): 遍历包含的所有DOM元素
+  * index(): 得到在所在兄弟元素中的下标
+-->
+<script src="../../../课件/jQuery库/jquery-1.10.1.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+  /*
+   需求:
+   需求1. 统计一共有多少个按钮
+   需求2. 取出第2个button的文本
+   需求3. 输出所有button标签的文本
+   需求4. 输出'测试三'按钮是所有按钮中的第几个
+   */
+  
+  // 需求1. 统计一共有多少个按钮
+  var $buttons =$('button')
+  console.log($buttons.size(),$buttons.length)
+  // 需求2. 取出第2个button的文本
+  index=1
+  console.log($buttons.get(index).innerHTML,$buttons[index].innerHTML)
+  console.log($buttons.get(1).innerHTML,$buttons[1].innerHTML)
+  // 需求3. 输出所有button标签的文本        1）
+  //each里参数是回调函数，domEle:dom元素
+  $buttons.each(function(index,domEle){
+	  console.log(index,domEle.innerHTML,this)   //this是Dom元素 
+  })
+ // 需求3. 输出所有button标签的文本        2） 
+  $buttons.each(function(index){  //要想打index，就一定要写进参数里！！！！！！！
+	  console.log(this.innerHTML,index)
+  })
+  // 需求4. 输出'测试三'按钮是所有按钮中的第几个
+  console.log("输出'测试三'按钮是所有按钮中的"+$('#btn3').index()+"个")   //2
+  
+/*  
+	伪数组
+    $buttons 就是一个伪数组 
+	1.Object对象
+	2.length属性
+	3.数值下标属性
+	没有数组特别的方法!!!!!!：forEach(),push(),pop(),splice()
+  */
+  console.log($buttons instanceof Array)   //false
+  
+  //自定义一个伪数组
+  var weiArr ={}
+  weiArr.length=2
+  weiArr[0]='sfsgdvs00'
+  weiArr[1]='sdgdfvd01'
+  for (var i=0 ;i<weiArr.length;i++) {
+  	var obj =weiArr[i]
+	console.log(i,obj)
+  }
+  
+  //forEach是数组的方法，伪数组不能用
+  console.log(weiArr.forEach,$buttons.forEach)  //undefined undefined
+  
+</script>
+</body>
+</html>
