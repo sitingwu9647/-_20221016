@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>多Tab点击切换</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        #tab li{
+            float: left;
+            list-style: none;
+            width: 80px;
+            height: 40px;
+            line-height: 40px;
+            cursor:pointer;
+            text-align: center;
+            padding: 0 20px;
+        }
+        #tab1{
+            background-color: teal;
+        }
+        #tab2{
+            background-color: tomato;
+        }
+        #tab3{
+            background-color: thistle;
+        }
+        
+        
+        #contenter{
+            width: 360px;
+            height: 200px;
+            position: relative; 
+            top: 40px;
+        }
+        #contenter #content1{
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            background-color: teal;
+        }
+        #contenter #content2{
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            background-color: tomato;
+            display: none;
+        }
+         #contenter #content3{
+             width: 100%;
+             height: 100%;
+             position: absolute;
+             background-color: thistle;
+             display: none;
+         }
+
+
+    </style>
+</head>
+<body>
+    <h2>多Tab点击切换</h2>
+	<!-- ul 是 Unordered List（无序列表） -->
+    <ul id='tab'>
+        <li id='tab1' value='1'>10元套餐</li>
+        <li id='tab2' value='2'>30元套餐</li>
+        <li id='tab3' value='3'>50元套餐</li>
+    </ul>
+    <div id='contenter'>
+        <div id = 'content1'>
+            10元套餐详情: <br/>每月套餐内拨打100分钟，超出部分2毛/分钟
+        </div>
+        <div id = 'content2'>
+            30元套餐详情: <br/>每月套餐内拨打300分钟，超出部分1.5毛/分钟
+        </div>
+        <div id = 'content3'>
+            50元套餐详情: <br/>随便打
+        </div>
+    </div>
+
+    <script type='text/javascript' src='../../../课件/jQuery库/jquery-1.10.1.js'></script>
+    <script type="text/javascript">
+		var $contents =$('#contenter>div')
+		//给3个li加监听
+	//	$('#tab>li').click(function(){
+			//隐式遍历
+			/* alert('99999') */
+	//		$contents.css('display','none')  //所有都隐藏!!!!!
+			//显示对应的内容
+			//得到当前点击li的下标，找到对应的div,并显示  法1
+	//		var index = $(this).index()
+			//$contents[index].style.display='block'  //dom元素
+			//得到当前点击li的下标，找到对应的div,并显示  法2
+	//		$($contents[index]).css('display','block') //jQuery对象
+			
+	//	}) 
+		
+		//升级版  隐藏当前已经显示的内容div
+		var currIndex =0 
+		$('#tab>li').click(function(){
+			$contents[currIndex].style.display='none'
+			var index =$(this).index()
+			$contents[index].style.display='block'
+			currIndex=index      //更新下标
+		})
+		
+	</script>
+    
+</body>
+</html>

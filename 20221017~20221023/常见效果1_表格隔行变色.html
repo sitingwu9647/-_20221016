@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	  <style type="text/css">
+	      *{
+	          margin:0;padding: 0;
+	      }
+	      table{
+	          width:500px;
+	          position:relative;
+	          margin:100px auto;
+	          border-collapse:collapse;
+	          border:1px solid #d7d7d7;
+	      }
+	      thead tr{
+	          background-color:#ccc;
+	          height:30px;
+	      }
+	      table tr{
+	          text-align: center;
+	          height:30px;
+	      }
+	      .bg{
+	          background: #eee;
+	      }
+	</style>	
+	</head>
+	<body>
+	<table  border=1 id="data">
+	    <thead>
+	        <tr>
+	            <td width="40">序号</td>
+	            <td width="100">前端单词</td>
+	            <td width="80">基本释义</td>
+	            <td width="50">长度</td>
+	            <td width="">补充</td>
+	        </tr>
+	    </thead>
+	    <tbody>
+	             <tr>
+	                   <td>1</td>
+	                   <td>select</td>
+	                   <td>选择</td>
+	                   <td>6</td>
+	                   <td>-</td>
+	             </tr>
+	             <tr>
+	                   <td>2</td>
+	                   <td>target</td>
+	                   <td>目标</td>
+	                   <td>6</td>
+	                   <td>-</td>
+	             </tr>
+	             <tr>
+	                   <td>3</td>
+	                   <td>input </td>
+	                   <td>输出</td>
+	                   <td>5</td>
+	                   <td>-</td>
+	             </tr>
+	             <tr>
+	                   <td>4</td>
+	                   <td>button</td>
+	                   <td>按钮</td>
+	                   <td>8</td>
+	                   <td>-</td>
+	             </tr>
+	             <tr>
+	                   <td>5</td>
+	                   <td>checkbox</td>
+	                   <td>复选框</td>
+	                   <td>8</td>
+	                   <td>-</td>
+	             </tr>
+	    </tbody>
+	</table>
+	<script type="text/javascript" src="../../../课件/jQuery库/jquery-1.10.1.js"></script>
+	<script type="text/javascript">
+		//数组从0 odd是奇数
+		$('#data>tbody>tr:odd').css('background','pink')
+		$('#data>tbody>tr:even').css('background','#aaffff')
+	</script>	
+	</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>03_回到顶部</title>
+		<style>
+		
+		#to_top {
+			width: 30px;
+			height: 40px;
+			font: 14px/20px arial;
+			text-align: center;
+			background: #06c;
+			position: fixed;
+			cursor: pointer;
+			color: #fff;
+			left: 1050px;
+			top: 500px;
+		}
+		
+		</style>
+	</head>
+	<body style="height: 2000px;">
+		<div id="to_top">返回顶部</div>
+		<script type="text/javascript" src="../../../课件/jQuery库/jquery-1.10.1.js"></script>
+		<script type="text/javascript">
+			//瞬间滚动到顶部
+/* 			$('#to_top').click(function(){	
+				$('html,body').scrollTop(0)
+			}) */
+			//慢慢移动到顶部
+				//总距离
+				$('#to_top').click(function(){
+					var $page = $('html,body')
+					var distance = $page.scrollTop()
+					//总时间
+					var time = 500
+					//间隔时间				
+					var intervalTime=100
+					var itemDistance = distance/(time/intervalTime)  //一共间隔10次，每次跳多少
+
+					//使用循环定时器不断滚动
+					//setInterval方法的作用是以指定的时间间隔调用函数或计算表达式，其使用语法如“setInterval(myFunction，myTimeLapse;)”
+					var intervalId = setInterval(function(){
+						distance -= itemDistance
+						//到达顶部，停止定时器
+						if(distance <= 0){
+							distance = 0 //修正一下
+							clearInterval(intervalId)
+						}
+						$page.scrollTop(distance)
+					},intervalTime)
+			})
+		</script>
+	</body>
+</html>
