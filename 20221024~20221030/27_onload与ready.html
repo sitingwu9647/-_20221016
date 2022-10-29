@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>window.onload与$(document).ready()</title>
+</head>
+<body>
+<h1>测试window.onload与$(document).ready()</h1>
+<img id="logo" src="https://gss0.bdstatic.com/5bVWsj_p_tVS5dKfpU_Y_D3/res/r/image/2017-05-19/6fec71d56242b74eb24b4ac80b817eac.png">
+
+<!--
+区别: window.onload与 $(document).ready()
+  * window.onload
+    * 包括页面的图片加载完后才会回调(晚)
+    * 只能有一个监听回调
+  * $(document).ready()
+    * 等同于: $(function(){})
+    * 页面加载完就回调(早)
+    * 可以有多个监听回调
+	
+	文档加载完:页面的图片加载完
+	
+	
+-->
+<script type="text/javascript" src="../../../课件/jQuery库/jquery-1.10.1.js"></script>
+<script type="text/javascript">
+  /*
+   需求：
+   1. 直接打印img的宽度，观察其值
+   2. 在 $(function(){}) 中 打印 img 的宽度
+   3. 在 window.onload 中打印宽度
+   4. 在 img 加载完成后打印宽度
+   */
+  
+  // 1. 直接打印img的宽度，观察其值
+  console.log('直接',$('#logo').width())
+  
+  window.onload=function(){  //所有数据加载完成后执行window.onload
+	  console.log('onload',$('#logo').width())  //会得到width
+  }
+  
+  window.onload=function(){  //所有数据加载完成后执行window.onload
+  	  console.log('onload22222',$('#logo').width())  //会得到width
+  }
+  
+  $(function(){
+	  console.log('ready',$('#logo').width())  //jQuery方式,这种的方式打印，有可能去不到（第一次时如果不做下面的话）
+  })
+  
+  $(function(){
+  	  console.log('ready222222222',$('#logo').width())  //jQuery方式,这种的方式打印，有可能去不到（第一次时如果不做下面的话）
+  })
+  
+  $('#logo').on('load',function(){
+	  console.log('在 img 加载完成后打印宽度:',$(this).width())  //加载完成后，上面三个都会得到值,因为有缓存!!!
+  })
+  
+  
+/*  $(document).ready(function(){
+	  
+  }) */
+</script>
+</body>
+</html>
