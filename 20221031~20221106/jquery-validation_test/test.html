@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			.error{  /* 自动生成，为了更醒目，改变颜色 */
+				color: palevioletred;
+			}
+		</style>
+	</head>
+	<body>
+		<form id="myForm" action="xxx">
+			<p>用户名(必须，且最小6位):<input name="username" type="text" required minlength="6"/></p>
+			<p>密码(必须，6到8位):<input id="password" name="pwd1" type="password" required minlength="6" maxlength="8"/></p>
+			<p>确认密码(和密码相同):<input name="pwd2" type="password" equalTo="#password"/></p>
+			<p><input type="submit" value="注册"/></p>
+		</form>
+		
+		<script type="text/javascript" src="jquery-1.11.1.js"></script>
+		<script type="text/javascript" src="jquery.validate.js"></script>
+		<script type="text/javascript">
+			//声明式验证:程序员只需要声明各种验证规则,也可以自定义验证错误信息
+			//对此表单开户验证
+			$('#myForm').validate({
+				messages: {
+					username:{     //应该写name的名字!!!!!!
+						required : '用户名是必须的',
+						minlength: '用户名至少为6位'
+					},
+					pwd1:{
+						required:'密码是必须的',
+						minlength:'密码至少为6位',
+						maxlength:'密码最多8位'
+					},
+					pwd2:{
+						equalTo:'必须与密码相同'
+					}
+				}
+				
+			})
+			
+			
+			
+			
+		</script>
+		
+		
+	</body>
+</html>
