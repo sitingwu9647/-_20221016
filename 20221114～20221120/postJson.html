@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<form action="postJson.html">
+
+			<input type="button" value="post json"/>
+			<div id="data"></div>
+			
+		</form>
+		
+		<!-- -->
+		<script src="./js/jquery-3.4.1.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				$('input').click(function(){
+					$.get('user.json',function(response){
+						var str="";
+						//Json属性
+						str+="ID:";
+						str+=response.id;
+						str+="<br> Name:";
+						str+=response.name;
+						//Json对象
+						str+="<br>address:"
+						str+=response.address.city;
+						str+=",";
+						str+=response.address.stree;
+						//数组
+						str+="<br> links :";
+						str+=response.links[0].name;
+						str+=",";
+						str+=response.links[0].url;
+			
+						$('#data').html(str);
+						
+					})
+				})
+			})
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,20 @@
+{
+	"id":12,
+	"name":"Tom",
+	"address":{
+		"city":"大连",
+		"stree":"黄浦路"
+	},
+	"links":[
+		{
+			"name":"Baidu",
+			"url":"http:www.baidu.com"
+		},
+		{
+				"name":"JD",
+				"url":"http:www.jd.com"
+		}
+	]
+
+	
+}

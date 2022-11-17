@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<input type="button" value="取得JSON数据" id="btn" />
+		<div id="data"></div>
+		<!--*********************************************-->
+		<script src="./js/jquery-3.4.1.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				$('input').click(function(){
+					//	$('#data').load()
+					
+					$.get('user.json',function(response){
+						//下面是js方式
+						// var dv=document.getElementById('data');
+						// dv.innerHTML=response.name;
+						$('#data').html(response.name)//jquery方式
+					})
+					
+				})
+			})
+		</script>
+	</body> 
+</html>
